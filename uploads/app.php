@@ -8,21 +8,26 @@
             return (!(self::$instance instanceof self)) || !empty($arg) ? self::$instance = new static (...(array) $arg) : self::$instance;
         }
         function __set($name, $value) {
-            return $this->$name = $value;
+             $this->$name = $value;
         }
     }
     //? Autoload
     function autoload($class) {
-        $directories = [
-
-        ];
-        $classFile = str_replace('\\', '/', $class). '.php';
-
+        $directories = array_filter(glob(dirname(__DIR__) . '/scripts/*'), 'is_dir');
+    
+        $classFile = str_replace('\\', '/', $class) . '.php';
+    
         foreach ($directories as $directory) {
-            $file = $directory . $classFile;
-            return (file_exists($file)) ? require $file : false;
+            $file = rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $classFile;
+            if (file_exists($file)) {
+                require $file;
+                break;
+            }
         }
     }
-    spl_autoload_register('autoload');
+
+     spl_autoload_register('autoload');
+
+    academicArea::Singleton(json_decode(file_get_contents("php://input"), true));
 
 ?>
