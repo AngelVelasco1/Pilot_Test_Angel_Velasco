@@ -2,10 +2,9 @@
 namespace App;
 abstract class credentials
 {
-    protected $host = '172.16.49.20';
-    private $user = 'sputnik';
-    private $password = 'Sp3tn1kC@'
-    ;
+    protected $host = '127.0.0.1';
+    private $user = 'root';
+    private $password;
     protected $dbname = 'campusland';
 
     public function __get($name)
