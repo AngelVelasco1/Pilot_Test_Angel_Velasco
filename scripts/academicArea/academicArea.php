@@ -1,4 +1,5 @@
 <?php
+namespace App;
 class academicArea extends connect
 {
     private $queryPost = 'INSERT INTO academic_area(id, id_area, id_staff, id_position, id_journeys) VALUES (:identification, :areaId, :staffId, :positionId, journeysId)';
@@ -42,7 +43,7 @@ class academicArea extends connect
             $sentence = $this->conx->prepare($this->queryGet);
             $sentence->execute();
 
-            $this->msg = ["Code" => 200, "Message" => $sentence->fetchAll(PDO::FETCH_ASSOC)];
+            $this->msg = ["Code" => 200, "Message" => $sentence->fetchAll(\PDO::FETCH_ASSOC)];
 
         } catch (\PDOException $e) {
             $this->msg = ["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]];
