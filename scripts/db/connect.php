@@ -1,11 +1,12 @@
 <?php
 namespace App;
+
 interface enviroment {
     public function __get($name);
 };
 abstract class connect extends credentials implements enviroment {
+    
     use Singleton;
-
     protected $conx;
 
     function __construct(private $driver = 'mysql', private $port = 3306) {

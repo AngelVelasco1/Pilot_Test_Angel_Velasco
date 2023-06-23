@@ -1,6 +1,6 @@
 <?php
 namespace App;
-class academicArea extends connect
+class academic_area extends connect
 {
     private $queryPost = 'INSERT INTO academic_area(id, id_area, id_staff, id_position, id_journeys) VALUES (:identification, :areaId, :staffId, :positionId, journeysId)';
     private $queryGet = 'SELECT id AS "identification", SELECT id_area AS "areaId", SELECT id_staff AS "staffId", SELECT id_position AS "positionId", SELECT id_journeys AS "journerysId FROM academic_area';

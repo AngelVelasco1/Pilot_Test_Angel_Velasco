@@ -7,16 +7,29 @@ namespace Composer\Autoload;
 class ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'A' => 
         array (
-            'Spukm01089\\PilotTestAngelVelasco\\' => 33,
+            'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Spukm01089\\PilotTestAngelVelasco\\' => 
+        'App\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/scripts/db',
+            1 => __DIR__ . '/../..' . '/scripts/system',
+            2 => __DIR__ . '/../..' . '/scripts/academicArea',
+            3 => __DIR__ . '/../..' . '/scripts/adminArea',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'B' => 
+        array (
+            'Bramus' => 
+            array (
+                0 => __DIR__ . '/..' . '/bramus/router/src',
+            ),
         ),
     );
 
@@ -29,6 +42,7 @@ class ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529::$classMap;
 
         }, null, ClassLoader::class);

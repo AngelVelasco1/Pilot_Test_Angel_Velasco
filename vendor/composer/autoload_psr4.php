@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Spukm01089\\PilotTestAngelVelasco\\' => array($baseDir . '/src'),
+    'App\\' => array($baseDir . '/scripts/db', $baseDir . '/scripts/system', $baseDir . '/scripts/academicArea', $baseDir . '/scripts/adminArea'),
 );
