@@ -11,23 +11,8 @@
              $this->$name = $value;
         }
     }
-    //? Autoload
-    function autoload($class) {
-        $directories = array_filter(glob(dirname(__DIR__) . '/scripts/*'), 'is_dir');
-    
-        $classFile = str_replace('\\', '/', $class) . '.php';
-    
-        foreach ($directories as $directory) {
-            $file = rtrim($directory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $classFile;
-            if (file_exists($file)) {
-                require $file;
-                break;
-            }
-        }
-    }
+    require_once __DIR__ . "/vendor/autoload.php";
 
-     spl_autoload_register('autoload');
-
-    academicArea::Singleton(json_decode(file_get_contents("php://input"), true));
+    academicArea::Singleton(json_decode(file_get_contents("php://input"), true))->academicAreaPost();
 
 ?>

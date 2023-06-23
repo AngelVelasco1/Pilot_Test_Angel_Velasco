@@ -1,0 +1,19 @@
+{
+    "name": "spukm01-089/pilot_test_angel_velasco",
+    "description": "...",
+    "license": "Send",
+    "autoload": {
+        "psr-4": {
+            "App\\": [
+                "" 
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Angel Velasco",
+            "email": "angelgg2020@outlook.com"
+        }
+    ],
+    "require": {}
+}
