@@ -1,5 +1,6 @@
 <?php
 namespace App;
+
 abstract class credentials
 {
     protected $host = '127.0.0.1';
@@ -11,7 +12,6 @@ abstract class credentials
     {
         $this->{$name};
     }
-
 }
 
 ?>
