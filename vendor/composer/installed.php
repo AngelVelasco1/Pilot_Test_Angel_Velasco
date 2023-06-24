@@ -3,7 +3,7 @@
         'name' => 'spukm01-089/pilot_test_angel_velasco',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '14b8b07d8044361840d037fa0e52516a2a3b5f73',
+        'reference' => '7457d5b55aae26a32779cf817b4b4acfed7ef5fd',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'spukm01-089/pilot_test_angel_velasco' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '14b8b07d8044361840d037fa0e52516a2a3b5f73',
+            'reference' => '7457d5b55aae26a32779cf817b4b4acfed7ef5fd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -18,8 +18,11 @@ class ComposerStaticInit75d7bc37dc933503eb4eb9b2d2759529
         array (
             0 => __DIR__ . '/../..' . '/scripts/db',
             1 => __DIR__ . '/../..' . '/scripts/system',
-            2 => __DIR__ . '/../..' . '/scripts/academicArea',
-            3 => __DIR__ . '/../..' . '/scripts/adminArea',
+            2 => __DIR__ . '/../..' . '/scripts/academic_area',
+            3 => __DIR__ . '/../..' . '/scripts/admin_area',
+            4 => __DIR__ . '/../..' . '/scripts/design_area',
+            5 => __DIR__ . '/../..' . '/scripts/maint_area',
+            6 => __DIR__ . '/../..' . '/scripts/marketing_area',
         ),
     );
 
