@@ -1,32 +1,29 @@
 <?php
 namespace App;
 
-class marketing_area extends connect
+class areas extends connect
 {
-    private $queryPost = 'INSERT INTO marketing_area(id, id_area, id_staff, id_position, id_journey) VALUES (:identification, :areaId, :staffId, :positionId, journeyId)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_area AS "areaId", SELECT id_staff AS "staffId", SELECT id_position AS "positionId", SELECT id_journey AS "journerysId FROM marketing_area';
-    private $queryUpdate = 'UPDATE marketing_area SET id_area = :areaId, id_staff = :staffId, id_position = :positionId, id_journey = :journeyId WHERE id = :identification';
-    private $queryDelete = 'DELETE FROM marketing_area WHERE id = :identification';
+    private $queryPost = 'INSERT INTO areas(id, name_area) VALUES (:identification, :name_area)';
+    private $queryGet = 'SELECT id AS "identification", name_area AS "name_area" FROM areas';
+    private $queryUpdate = 'UPDATE areas SET name_area = :name_area WHERE id = :identification';
+    private $queryDelete = 'DELETE FROM areas WHERE id = :identification';
     private $msg;
     use Singleton;
 
     //? Constructor */
-    function __construct(private $id = 1, private $id_area = 1, private $id_staff = 1, private $id_position, private $id_journey = 1)
+    function __construct(private $id = 1, public $name_area = 1)
     {
         parent::__construct();
     }
 
     //? POST Function */
-    public function marketingAreaPost()
+    public function areasPost()
     {
         try {
             $sentence = $this->conx->prepare($this->queryPost);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("areaId", $this->id_area);
-            $sentence->bindValue("staffId", $this->id_staff);
-            $sentence->bindValue("positionId", $this->id_position);
-            $sentence->bindValue("journeyId", $this->id_journey);
+            $sentence->bindValue("name_area", $this->name_area);
 
             $sentence->execute();
 
@@ -38,7 +35,7 @@ class marketing_area extends connect
         }
     }
     //? GET Function */
-    public function marketingAreaGet()
+    public function areasGet()
     {
         try {
             $sentence = $this->conx->prepare($this->queryGet);
@@ -54,16 +51,13 @@ class marketing_area extends connect
     }
 
     //? UPDATE Function */
-    function marketingAreaUpdate()
+    function areasUpdate()
     {
         try {
             $sentence = $this->conx->prepare($this->queryUpdate);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("areaId", $this->id_area);
-            $sentence->bindValue("staffId", $this->id_staff);
-            $sentence->bindValue("positionId", $this->id_position);
-            $sentence->bindValue("journeyId", $this->id_journey);
+            $sentence->bindValue("name_area", $this->name_area);
             $sentence->execute();
 
             ($sentence->rowCount() > 0) ? $this->msg = ["Code" => 200, "Message" => "Updated Data"] : "none";
@@ -74,7 +68,7 @@ class marketing_area extends connect
         }
     }
     //? DELETE Function */
-    function marketingAreaDelete()
+    function areasDelete()
     {
         try {
             $sentence = $this->conx->prepare($this->queryDelete);

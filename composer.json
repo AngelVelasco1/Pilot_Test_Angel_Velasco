@@ -11,7 +11,8 @@
                 "./scripts/admin_area",
                 "./scripts/design_area",
                 "./scripts/maint_area",
-                "./scripts/marketing_area"
+                "./scripts/marketing_area",
+                "./scripts/areas"
             ]
         }
     },
