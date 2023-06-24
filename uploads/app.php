@@ -4,8 +4,8 @@
     require_once "../vendor/autoload.php";
     $router = new \Bramus\Router\Router();
 
-    $router->post('/cities', function() {
-        App\cities::Singleton(json_decode(file_get_contents("php://input"), true))->citiesPost();
+    $router->post('/countries', function() {
+        App\countries::Singleton(json_decode(file_get_contents("php://input"), true))->countriesPost();
     });
     $router->run();
     
