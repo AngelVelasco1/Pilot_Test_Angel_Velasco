@@ -1,31 +1,33 @@
 <?php
-namespace App\team_educators;
+namespace App\position;
 use App\db\connect;
 use App\Singleton;
-class team_educators extends connect
+class position extends connect
 {
-    private $queryPost = 'INSERT INTO team_educators(id, name_rol) VALUES (:identification, :rol)';
-    private $queryGet = 'SELECT id AS "identification", SELECT name_rol AS "rol" FROM team_educators';
-    private $queryUpdate = 'UPDATE team_educators SET name_rol = :rol WHERE id = :identification';
-    private $queryDelete = 'DELETE FROM team_educators WHERE id = :identification';
+    private $queryPost = 'INSERT INTO position(id, name_position, arl) VALUES (:identification, :name_position, :arl)';
+    private $queryGet = 'SELECT id AS "identification", SELECT name_position AS "name_position", SELECT arl AS "arl" FROM position';
+    private $queryUpdate = 'UPDATE position SET name_position = :name_position, arl = :arl WHERE id = :identification';
+    private $queryDelete = 'DELETE FROM position WHERE id = :identification';
     private $msg;
 
     use Singleton;
 
     //? Constructor */
-    function __construct(private $id = 1, private $name_rol= 1)
+    function __construct(private $id = 1, private $name_position= 1, private $arl = 1)
     {
         parent::__construct();
     }
 
     //? POST Function */
-    public function team_educatorsPost()
+    public function positionPost()
     {
         try {
             $sentence = $this->conx->prepare($this->queryPost);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("rol", $this->name_rol);
+            $sentence->bindValue("position", $this->name_position);
+            $sentence->bindValue("arl", $this->arl);
+
 
             $sentence->execute();
 
@@ -37,7 +39,7 @@ class team_educators extends connect
         }
     }
     //? GET Function */
-    public function team_educatorsGet()
+    public function positionGet()
     {
         try {
             $sentence = $this->conx->prepare($this->queryGet);
@@ -53,14 +55,15 @@ class team_educators extends connect
     }
 
     //? UPDATE Function */
-    function team_educatorsUpdate()
+    function positionUpdate()
     {
         try {
             $sentence = $this->conx->prepare($this->queryUpdate);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("rol", $this->name_rol);
-  
+            $sentence->bindValue("position", $this->name_position);
+            $sentence->bindValue("arl", $this->arl);
+
             $sentence->execute();
 
             ($sentence->rowCount() > 0) ? $this->msg = ["Code" => 200, "Message" => "Updated Data"] : "none";
@@ -71,7 +74,7 @@ class team_educators extends connect
         }
     }
     //? DELETE Function */
-    function team_educatorsDelete()
+    function positionDelete()
     {
         try {
             $sentence = $this->conx->prepare($this->queryDelete);
