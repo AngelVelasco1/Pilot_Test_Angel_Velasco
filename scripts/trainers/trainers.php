@@ -5,7 +5,14 @@ use App\Singleton;
 class trainers extends connect
 {
     private $queryPost = 'INSERT INTO trainers(id, id_staff, id_level, id_route, id_academic_area, id_position, id_team_educator) VALUES (:identification, :id_staff, :id_level, :id_route, :id_academic_area, :id_position, :id_team_educator)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_level AS "id_level", SELECT id_route AS "id_route", SELECT id_academic_area AS "id_academic_area", SELECT id_position AS "id_position", SELECT id_team_educator AS "id_team_educator" FROM trainers';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_level AS "id_level", SELECT id_route AS "id_route", SELECT id_academic_area AS "id_academic_area", SELECT id_position AS "id_position", SELECT id_team_educator AS "id_team_educator" FROM trainers
+        INNER JOIN staff ON trainers.id_staff = staff.id,
+        INNER JOIN levels ON trainers.id_level = levels.id,
+        INNER JOIN routes ON trainers.id_route = routes.id,
+        INNER JOIN academic_area ON trainers.id_academic_area = academic_area.id,
+        INNER JOIN position ON trainers.id_position = position.id,
+        INNER JOIN team_educators ON trainers.id_team_educator = team_educators.id
+    ';
     private $queryUpdate = 'UPDATE trainers SET id_staff = :id_staff, id_level AS :id_level, id_route AS :id_route, id_academic_area AS :id_academic_area, id_position AS :id_position, id_team_educator AS :id_team_educator WHERE id = :identification';
     private $queryDelete = 'DELETE FROM trainers WHERE id = :identification';
     private $msg;
