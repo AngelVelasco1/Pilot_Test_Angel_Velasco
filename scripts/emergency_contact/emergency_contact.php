@@ -1,36 +1,35 @@
 <?php
 namespace App;
 
-class contact_info extends connect
+class emergency_contact extends connect
 {
-    private $queryPost = 'INSERT INTO contact_info(id, id_staff, whatsapp, instagram, linkedin, email, address, cel_number) VALUES (:identification, :staffId, :whatsapp, :instagram, :linkedin, :email, :address, :cel)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "staffId", SELECT whatsapp AS "whatsapp", SELECT instagram AS :instagram, SELECT linkedin AS "linkedin", SELECT email AS "email", SELECT address AS "address", SELECT cel_number AS "cel" FROM contact_info';
-    private $queryUpdate = 'UPDATE contact_info SET id_staff = :staffId, whatsapp = :whatsapp, instagram = :instagram, linkedin = :linkedin, email = :email, address = :address, cel_number = :cel WHERE id = :identification';
-    private $queryDelete = 'DELETE FROM contact_info WHERE id = :identification';
+    private $queryPost = 'INSERT INTO emergency_contact(id, id_staff, cel_number, relationship, full_name, email) VALUES (:identification, :staffId, :cel, :relationship, :name, :email)';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "staffId", SELECT cel_number AS :cel, SELECT relationship AS "relationship", SELECT full_name AS "name", SELECT email AS "email" FROM emergency_contact';
+    private $queryUpdate = 'UPDATE emergency_contact SET id_staff = :staffId, relationship = :relationship, full_name = :name, email = :email WHERE id = :identification';
+    private $queryDelete = 'DELETE FROM emergency_contact WHERE id = :identification';
     private $msg;
 
     use Singleton;
 
     //? Constructor */
-    function __construct(private $id = 1, private $id_staff= 1, private $whatsapp= 1, public $instagram = 1, public $linkedin = 1, private $email = 1, private $address = 1, private $cel_number = 1)
+    function __construct(private $id = 1, private $id_staff= 1, private $cel_number= 1, public $relationship = 1, public $full_name = 1, private $email = 1)
     {
         parent::__construct();
     }
 
     //? POST Function */
-    public function contactInfoPost()
+    public function emergencyContactPost()
     {
         try {
             $sentence = $this->conx->prepare($this->queryPost);
 
             $sentence->bindValue("identification", $this->id);
             $sentence->bindValue("staffId", $this->id_staff);
-            $sentence->bindValue("whatsapp", $this->whatsapp);
-            $sentence->bindValue("instagram", $this->instagram);
-            $sentence->bindValue("linkedin", $this->linkedin);
-            $sentence->bindValue("email", $this->email);
-            $sentence->bindValue("address", $this->address);
             $sentence->bindValue("cel", $this->cel_number);
+            $sentence->bindValue("relationship", $this->relationship);
+            $sentence->bindValue("name", $this->full_name);
+            $sentence->bindValue("email", $this->email);
+         
 
             $sentence->execute();
 
@@ -42,7 +41,7 @@ class contact_info extends connect
         }
     }
     //? GET Function */
-    public function contactInfoGet()
+    public function emergencyContactGet()
     {
         try {
             $sentence = $this->conx->prepare($this->queryGet);
@@ -58,19 +57,17 @@ class contact_info extends connect
     }
 
     //? UPDATE Function */
-    function contactInfoUpdate()
+    function emergencyContactUpdate()
     {
         try {
             $sentence = $this->conx->prepare($this->queryUpdate);
 
             $sentence->bindValue("identification", $this->id);
             $sentence->bindValue("staffId", $this->id_staff);
-            $sentence->bindValue("whatsapp", $this->whatsapp);
-            $sentence->bindValue("instagram", $this->instagram);
-            $sentence->bindValue("linkedin", $this->linkedin);
-            $sentence->bindValue("email", $this->email);
-            $sentence->bindValue("address", $this->address);
             $sentence->bindValue("cel", $this->cel_number);
+            $sentence->bindValue("relationship", $this->relationship);
+            $sentence->bindValue("name", $this->full_name);
+            $sentence->bindValue("email", $this->email);
 
             $sentence->execute();
 
@@ -82,7 +79,7 @@ class contact_info extends connect
         }
     }
     //? DELETE Function */
-    function contactInfoDelete()
+    function emergencyContactDelete()
     {
         try {
             $sentence = $this->conx->prepare($this->queryDelete);
