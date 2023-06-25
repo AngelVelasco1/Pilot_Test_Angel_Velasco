@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\db;
 
 interface enviroment
 {
@@ -8,7 +8,6 @@ interface enviroment
 ;
 abstract class connect extends credentials implements enviroment
 {
-    use Singleton;
     protected $conx;
 
     function __construct(private $driver = 'mysql', private $port = 3306)

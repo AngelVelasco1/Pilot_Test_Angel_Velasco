@@ -1,5 +1,7 @@
 <?php
-namespace App;
+namespace App\design_area;
+use App\db\connect;
+use App\Singleton;
 
 class design_area extends connect
 {

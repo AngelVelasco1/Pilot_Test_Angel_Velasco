@@ -1,31 +1,33 @@
 <?php
-namespace App;
-
-class countries extends connect
+namespace App\regions;
+use App\db\connect;
+use App\Singleton;
+class regions extends connect
 {
-    private $queryPost = 'INSERT INTO countries(id, name_country) VALUES (:identification, :country)';
-    private $queryGet = 'SELECT id AS "identification", SELECT name_country AS "country" FROM countries';
-    private $queryUpdate = 'UPDATE countries SET name_country = :country  WHERE id = :identification';
-    private $queryDelete = 'DELETE FROM countries WHERE id = :identification';
+    private $queryPost = 'INSERT INTO regions(id, name_region, id_country) VALUES (:identification, :region, :id_country)';
+    private $queryGet = 'SELECT id AS "identification", SELECT name_region AS "region", SELECT id_country AS "id_country" FROM regions';
+    private $queryUpdate = 'UPDATE regions SET name_region = :region, id_country AS :id_country" WHERE id = :identification';
+    private $queryDelete = 'DELETE FROM regions WHERE id = :identification';
     private $msg;
 
     use Singleton;
 
     //? Constructor */
-    function __construct(private $id = 1, private $name_country= 1)
+    function __construct(private $id = 1, private $name_region= 1,  private $id_country= 1)
     {
         parent::__construct();
     }
 
     //? POST Function */
-    public function countriesPost()
+    public function regionsPost()
     {
         try {
             $sentence = $this->conx->prepare($this->queryPost);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("country", $this->name_country);
-         
+            $sentence->bindValue("region", $this->name_region);
+            $sentence->bindValue("id_country", $this->id_country);
+
             $sentence->execute();
 
             $this->msg = ["Code" => 200 + $sentence->rowCount(), "Message" => "Inserted Data"];
@@ -36,7 +38,7 @@ class countries extends connect
         }
     }
     //? GET Function */
-    public function countriesGet()
+    public function regionsGet()
     {
         try {
             $sentence = $this->conx->prepare($this->queryGet);
@@ -52,13 +54,14 @@ class countries extends connect
     }
 
     //? UPDATE Function */
-    function countriesUpdate()
+    function regionsUpdate()
     {
         try {
             $sentence = $this->conx->prepare($this->queryUpdate);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("country", $this->name_country);
+            $sentence->bindValue("region", $this->name_region);
+            $sentence->bindValue("id_country", $this->id_country);
   
             $sentence->execute();
 
@@ -70,7 +73,7 @@ class countries extends connect
         }
     }
     //? DELETE Function */
-    function countriesDelete()
+    function regionsDelete()
     {
         try {
             $sentence = $this->conx->prepare($this->queryDelete);

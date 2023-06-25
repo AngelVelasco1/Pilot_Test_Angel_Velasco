@@ -17,6 +17,7 @@
                 
                 "./scripts/cities",
                 "./scripts/countries",
+                "./scripts/regions",
 
                 "./scripts/contact_info",
                 "./scripts/emergency_contact",
@@ -27,7 +28,7 @@
                 "./scripts/soft_skills",
                 "./scripts/review_skills"
 
-            
+        
             ]
         }
     },
