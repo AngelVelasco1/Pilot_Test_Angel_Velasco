@@ -4,8 +4,8 @@
     require_once "../vendor/autoload.php";
     $router = new \Bramus\Router\Router();
 
-    $router->post('/soft_skills', function() {
-        App\soft_skills::Singleton(json_decode(file_get_contents("php://input"), true))->softSkillsPost();
+    $router->post('/review_skills', function() {
+        App\review_skills::Singleton(json_decode(file_get_contents("php://input"), true))->reviewSkillsPost();
     });
     $router->run();
     

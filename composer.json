@@ -24,9 +24,10 @@
                 "./scripts/campers",
                 "./scripts/software_skills",
                 "./scripts/english_skills",
-                "./scripts/softsoft_skills_skills"
-                
+                "./scripts/soft_skills",
+                "./scripts/review_skills"
 
+            
             ]
         }
     },
