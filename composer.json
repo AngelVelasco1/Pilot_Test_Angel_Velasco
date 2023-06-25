@@ -31,8 +31,12 @@
                 "./scripts/team_educators",
                 "./scripts/teachers",
                 "./scripts/trainers",
-                "./scripts/tutors",
-                "./scripts/psychologist"
+                "./scripts/routes",
+                "./scripts/levels",
+                "./scripts/position",
+                "./scripts/staff"
+
+
             ]
         }
     },
