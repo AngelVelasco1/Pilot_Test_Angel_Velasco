@@ -4,7 +4,7 @@ namespace App;
 class emergency_contact extends connect
 {
     private $queryPost = 'INSERT INTO emergency_contact(id, id_staff, cel_number, relationship, full_name, email) VALUES (:identification, :staffId, :cel, :relationship, :name, :email)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "staffId", SELECT cel_number AS :cel, SELECT relationship AS "relationship", SELECT full_name AS "name", SELECT email AS "email" FROM emergency_contact';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "staffId", SELECT cel_number AS "cel", SELECT relationship AS "relationship", SELECT full_name AS "name", SELECT email AS "email" FROM emergency_contact';
     private $queryUpdate = 'UPDATE emergency_contact SET id_staff = :staffId, relationship = :relationship, full_name = :name, email = :email WHERE id = :identification';
     private $queryDelete = 'DELETE FROM emergency_contact WHERE id = :identification';
     private $msg;

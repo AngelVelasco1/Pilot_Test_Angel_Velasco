@@ -18,7 +18,10 @@
                 "./scripts/cities",
                 "./scripts/countries",
 
-                "./scripts/contact_info"
+                "./scripts/contact_info",
+                "./scripts/emergency_contact",
+
+                "./scripts/campers"
             ]
         }
     },
