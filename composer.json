@@ -7,12 +7,18 @@
             "App\\": [
                 "./scripts/db",
                 "./scripts/system",
+
                 "./scripts/academic_area",
                 "./scripts/admin_area",
                 "./scripts/design_area",
                 "./scripts/maint_area",
                 "./scripts/marketing_area",
-                "./scripts/areas"
+                "./scripts/areas",
+                
+                "./scripts/cities",
+                "./scripts/countries",
+
+                "./scripts/contact_info"
             ]
         }
     },
