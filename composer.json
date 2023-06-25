@@ -22,7 +22,8 @@
                 "./scripts/emergency_contact",
 
                 "./scripts/campers",
-                "./scripts/software_skills"
+                "./scripts/software_skills",
+                "./scripts/english_skills"
 
             ]
         }
