@@ -26,9 +26,13 @@
                 "./scripts/software_skills",
                 "./scripts/english_skills",
                 "./scripts/soft_skills",
-                "./scripts/review_skills"
+                "./scripts/review_skills",
 
-        
+                "./scripts/team_educators",
+                "./scripts/teachers",
+                "./scripts/trainers",
+                "./scripts/tutors",
+                "./scripts/psychologist"
             ]
         }
     },

@@ -1,32 +1,35 @@
 <?php
-namespace App\regions;
+namespace App\teachers;
 use App\db\connect;
 use App\Singleton;
-class regions extends connect
+class teachers extends connect
 {
-    private $queryPost = 'INSERT INTO regions(id, name_region, id_country) VALUES (:identification, :region, :id_country)';
-    private $queryGet = 'SELECT id AS "identification", SELECT name_region AS "region", SELECT id_country AS "id_country" FROM regions';
-    private $queryUpdate = 'UPDATE regions SET name_region = :region, id_country AS :id_country WHERE id = :identification';
-    private $queryDelete = 'DELETE FROM regions WHERE id = :identification';
+    private $queryPost = 'INSERT INTO teachers(id, id_staff, id_route, id_academic_area, id_position, id_team_educator) VALUES (:identification, :id_staff, :id_route, :id_academic_area, :id_position, :id_team_educator)';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_route AS "id_route", SELECT id_academic_area AS "id_academic_area", SELECT id_position AS "id_position", SELECT id_team_educator AS "id_team_educator" FROM teachers';
+    private $queryUpdate = 'UPDATE teachers SET id_staff = :id_staff, id_route AS :id_route, id_academic_area AS :id_academic_area, id_position AS :id_position, id_team_educator AS :id_team_educator WHERE id = :identification';
+    private $queryDelete = 'DELETE FROM teachers WHERE id = :identification';
     private $msg;
 
     use Singleton;
 
     //? Constructor */
-    function __construct(private $id = 1, private $name_region= 1,  private $id_country= 1)
+    function __construct(private $id = 1, private $id_staff= 1,  private $id_route= 1, private $id_academic_area= 1, private $id_position= 1, private $id_team_educator= 1)
     {
         parent::__construct();
     }
 
     //? POST Function */
-    public function regionsPost()
+    public function teachersPost()
     {
         try {
             $sentence = $this->conx->prepare($this->queryPost);
 
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("region", $this->name_region);
-            $sentence->bindValue("id_country", $this->id_country);
+            $sentence->bindValue("id_staff", $this->id_staff);
+            $sentence->bindValue("id_route", $this->id_route);
+            $sentence->bindValue("id_academic_area", $this->id_academic_area);
+            $sentence->bindValue("id_position", $this->id_position);
+            $sentence->bindValue("id_team_educator", $this->id_team_educator);
 
             $sentence->execute();
 
@@ -38,7 +41,7 @@ class regions extends connect
         }
     }
     //? GET Function */
-    public function regionsGet()
+    public function teachersGet()
     {
         try {
             $sentence = $this->conx->prepare($this->queryGet);
@@ -54,15 +57,18 @@ class regions extends connect
     }
 
     //? UPDATE Function */
-    function regionsUpdate()
+    function teachersUpdate()
     {
         try {
             $sentence = $this->conx->prepare($this->queryUpdate);
 
+           
             $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("region", $this->name_region);
-            $sentence->bindValue("id_country", $this->id_country);
-  
+            $sentence->bindValue("id_staff", $this->id_staff);
+            $sentence->bindValue("id_route", $this->id_route);
+            $sentence->bindValue("id_academic_area", $this->id_academic_area);
+            $sentence->bindValue("id_position", $this->id_position);
+            $sentence->bindValue("id_team_educator", $this->id_team_educator);
             $sentence->execute();
 
             ($sentence->rowCount() > 0) ? $this->msg = ["Code" => 200, "Message" => "Updated Data"] : "none";
@@ -73,7 +79,7 @@ class regions extends connect
         }
     }
     //? DELETE Function */
-    function regionsDelete()
+    function teachersDelete()
     {
         try {
             $sentence = $this->conx->prepare($this->queryDelete);
