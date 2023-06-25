@@ -35,8 +35,6 @@
                 "./scripts/levels",
                 "./scripts/position",
                 "./scripts/staff"
-
-
             ]
         }
     },

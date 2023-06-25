@@ -1,11 +1,18 @@
 <?php
 namespace App\teachers;
+
 use App\db\connect;
 use App\Singleton;
+
 class teachers extends connect
 {
     private $queryPost = 'INSERT INTO teachers(id, id_staff, id_route, id_academic_area, id_position, id_team_educator) VALUES (:identification, :id_staff, :id_route, :id_academic_area, :id_position, :id_team_educator)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_route AS "id_route", SELECT id_academic_area AS "id_academic_area", SELECT id_position AS "id_position", SELECT id_team_educator AS "id_team_educator" FROM teachers';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_route AS "id_route", SELECT id_academic_area AS "id_academic_area", SELECT id_position AS "id_position", SELECT id_team_educator AS "id_team_educator" FROM teachers
+        INNER JOIN staff ON teachers.id_staff = staff.id,
+        INNER JOIN routes ON teachers.id_route = routes.id,
+        INNER JOIN academic_area ON teachers.id_academic_area = academic_area.id,
+        INNER JOIN position ON teachers.id_position = position.id,
+        INNER JOIN team_educators ON teachers.id_team_educator = team_educators.id';
     private $queryUpdate = 'UPDATE teachers SET id_staff = :id_staff, id_route AS :id_route, id_academic_area AS :id_academic_area, id_position AS :id_position, id_team_educator AS :id_team_educator WHERE id = :identification';
     private $queryDelete = 'DELETE FROM teachers WHERE id = :identification';
     private $msg;
@@ -13,7 +20,7 @@ class teachers extends connect
     use Singleton;
 
     //? Constructor */
-    function __construct(private $id = 1, private $id_staff= 1,  private $id_route= 1, private $id_academic_area= 1, private $id_position= 1, private $id_team_educator= 1)
+    function __construct(private $id = 1, private $id_staff = 1, private $id_route = 1, private $id_academic_area = 1, private $id_position = 1, private $id_team_educator = 1)
     {
         parent::__construct();
     }
@@ -62,7 +69,7 @@ class teachers extends connect
         try {
             $sentence = $this->conx->prepare($this->queryUpdate);
 
-           
+
             $sentence->bindValue("identification", $this->id);
             $sentence->bindValue("id_staff", $this->id_staff);
             $sentence->bindValue("id_route", $this->id_route);
