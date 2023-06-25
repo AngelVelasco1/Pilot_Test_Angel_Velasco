@@ -23,7 +23,9 @@
 
                 "./scripts/campers",
                 "./scripts/software_skills",
-                "./scripts/english_skills"
+                "./scripts/english_skills",
+                "./scripts/softsoft_skills_skills"
+                
 
             ]
         }
