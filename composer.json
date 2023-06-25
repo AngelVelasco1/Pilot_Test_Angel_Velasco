@@ -21,7 +21,9 @@
                 "./scripts/contact_info",
                 "./scripts/emergency_contact",
 
-                "./scripts/campers"
+                "./scripts/campers",
+                "./scripts/software_skills"
+
             ]
         }
     },
