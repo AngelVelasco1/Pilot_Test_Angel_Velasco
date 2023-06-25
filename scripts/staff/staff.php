@@ -7,7 +7,10 @@ use App\Singleton;
 class staff extends connect
 {
     private $queryPost = 'INSERT INTO staff(id, doc, first_name, second_name, first_surname, second_surname, eps, id_area, id_city) VALUES(:identificacion, :doc, :firstName, :secondname, :firstSurname, :secondSurname, :eps, :areaId, :cityId)';
-    private $queryGet = 'SELECT id AS "identification", SELECT doc AS "doc", SELECT first_name AS "firstName",  SELECT second_name AS "secondName",  SELECT first_surname AS "firstSurname",  SELECT second_surname AS "secondSurname",  SELECT eps AS "eps", SELECT id_area AS "areaId", SELECT id_city AS "cityId" FROM staff';
+    private $queryGet = 'SELECT id AS "identification", SELECT doc AS "doc", SELECT first_name AS "firstName",  SELECT second_name AS "secondName",  SELECT first_surname AS "firstSurname",  SELECT second_surname AS "secondSurname",  SELECT eps AS "eps", SELECT id_area AS "areaId", SELECT id_city AS "cityId" FROM staff
+        INNER JOIN areas ON staff.id_area = areas.id,
+        INNER JOIN cities ON staff.id_city = cities.id,
+    ';
     private $queryUpdate = 'UPDATE staff SET doc = :doc, first_name = :firstName, second_name = :secondName, first_surname = :firstSurname, second_surname = :secondSurname, eps = :eps, id_area = :areaId, id_city = :cityId WHERE id = :identification';
     private $queryDelete = 'DELETE FROM staff WHERE id = :identification';
     private $msg;
