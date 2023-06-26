@@ -4,7 +4,11 @@ namespace App;
 class marketing_area extends connect
 {
     private $queryPost = 'INSERT INTO marketing_area(id, id_area, id_staff, id_position, id_journey) VALUES (:identification, :areaId, :staffId, :positionId, journeyId)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_area AS "areaId", SELECT id_staff AS "staffId", SELECT id_position AS "positionId", SELECT id_journey AS "journerysId FROM marketing_area';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_area AS "areaId", SELECT id_staff AS "staffId", SELECT id_position AS "positionId", SELECT id_journey AS "journerysId FROM marketing_area
+        INNER JOIN areas on admin_area.id_area = areas.id,
+        INNER JOIN staff on admin_area.id_staff = staff.id,
+        INNER JOIN position on admin_area.id_position = position.id
+    ';
     private $queryUpdate = 'UPDATE marketing_area SET id_area = :areaId, id_staff = :staffId, id_position = :positionId, id_journey = :journeyId WHERE id = :identification';
     private $queryDelete = 'DELETE FROM marketing_area WHERE id = :identification';
     private $msg;
