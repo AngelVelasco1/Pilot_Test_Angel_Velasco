@@ -24,11 +24,11 @@ class design_area extends connect
         try {
             $sentence = $this->conx->prepare($this->queryPost);
 
-            $sentence->bindValue("identification", $this->id);
-            $sentence->bindValue("areaId", $this->id_area);
-            $sentence->bindValue("staffId", $this->id_staff);
-            $sentence->bindValue("positionId", $this->id_position);
-            $sentence->bindValue("journeyId", $this->id_journey);
+            $sentence->bindValue("identification", $this->id, \PDO::PARAM_STR);
+            $sentence->bindValue("areaId", $this->id_area, \PDO::PARAM_STR);
+            $sentence->bindValue("staffId", $this->id_staff,  \PDO::PARAM_STR);
+            $sentence->bindValue("positionId", $this->id_position, \PDO::PARAM_STR);
+            $sentence->bindValue("journeyId", $this->id_journey, \PDO::PARAM_STR);
 
             $sentence->execute();
 

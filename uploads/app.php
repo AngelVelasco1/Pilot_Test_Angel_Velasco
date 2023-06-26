@@ -4,8 +4,8 @@
     require_once "../vendor/autoload.php";
     $router = new \Bramus\Router\Router();
 
-    $router->post('/trainers', function() {
-        App\trainers\trainers::Singleton(json_decode(file_get_contents("php://input"), true))->trainersPost();
+    $router->post('/design_area', function() {
+        App\design_area\design_area::Singleton(json_decode(file_get_contents("php://input"), true))->designAreaPost();
     });
     $router->run();
 ?>
