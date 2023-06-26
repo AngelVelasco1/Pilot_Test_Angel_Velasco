@@ -4,7 +4,17 @@ namespace App;
 class campers extends connect
 {
     private $queryPost = 'INSERT INTO campers(id, id_team_schedule, id_route, id_trainer, id_psycologist, id_teacher, id_level, id_journey, id_staff) VALUES (:identification, :id_team_schedule, :id_route, :id_trainer, :id_psycologist, :id_teacher, :id_level, :id_journey, :id_staff)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_team_schedule AS "id_team_schedule", SELECT id_route AS "id_route", SELECT id_trainer AS "id_trainer", SELECT id_psycologist AS "id_psycologist", SELECT id_teacher AS "id_teacher", SELECT id_level AS "id_level", SELECT id_journey AS "id_journey" FROM campers';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_staff AS "id_staff", SELECT id_team_schedule AS "id_team_schedule", SELECT id_route AS "id_route", SELECT id_trainer AS "id_trainer", SELECT id_psycologist AS "id_psycologist", SELECT id_teacher AS "id_teacher", SELECT id_level AS "id_level", SELECT id_journey AS "id_journey" FROM campers
+        INNER JOIN routes on campers.id_route = routes.id,
+        INNER JOIN trainers on campers.id_trainer = trainers.id,
+        INNER JOIN routes on campers.id_route = routes.id,
+        INNER JOIN teachers on campers.id_teacher = teachers.id,
+        INNER JOIN levels on campers.id_level = levels.id,
+        INNER JOIN staff on campers.id_staff = staff.id,
+
+
+
+    ';
     private $queryUpdate = 'UPDATE campers SET id_staff = :id_staff, id_team_schedule = :id_team_schedule, id_route = :id_route, id_trainer = :id_trainer, id_psycologist = :id_psycologist, id_teacher = :id_teacher, id_level = :id_level, id_journey = :id_journey WHERE id = :identification';
     private $queryDelete = 'DELETE FROM campers WHERE id = :identification';
     private $msg;
