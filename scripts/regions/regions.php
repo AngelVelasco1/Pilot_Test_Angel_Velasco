@@ -5,7 +5,8 @@ use App\Singleton;
 class regions extends connect
 {
     private $queryPost = 'INSERT INTO regions(id, name_region, id_country) VALUES (:identification, :region, :id_country)';
-    private $queryGet = 'SELECT id AS "identification", SELECT name_region AS "region", SELECT id_country AS "id_country" FROM regions';
+    private $queryGet = 'SELECT id AS "identification", SELECT name_region AS "region", SELECT id_country AS "id_country" FROM regions 
+        INNER JOIN  countries ON regions.id_country = countries.id';
     private $queryUpdate = 'UPDATE regions SET name_region = :region, id_country AS :id_country WHERE id = :identification';
     private $queryDelete = 'DELETE FROM regions WHERE id = :identification';
     private $msg;
