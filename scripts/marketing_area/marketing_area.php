@@ -1,6 +1,7 @@
 <?php
-namespace App;
-
+namespace App\marketing_area;
+use App\db\connect;
+use App\Singleton;
 class marketing_area extends connect
 {
     private $queryPost = 'INSERT INTO marketing_area(id, id_area, id_staff, id_position, id_journey) VALUES (:identification, :areaId, :staffId, :positionId, journeyId)';

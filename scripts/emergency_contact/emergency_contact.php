@@ -1,6 +1,7 @@
 <?php
-namespace App;
-
+namespace App\emergency_contact;
+use App\db\connect;
+use App\Singleton;
 class emergency_contact extends connect
 {
     private $queryPost = 'INSERT INTO emergency_contact(id, id_staff, cel_number, relationship, full_name, email) VALUES (:identification, :staffId, :cel, :relationship, :name, :email)';

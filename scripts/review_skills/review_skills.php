@@ -1,6 +1,7 @@
 <?php
-namespace App;
-
+namespace App\review_skills;
+use App\db\connect;
+use App\Singleton;
 class review_skills extends connect
 {
     private $queryPost = 'INSERT INTO review_skills(id, id_team_schedule, id_tutor, id_location, id_journey) VALUES (:identification, :id_team_schedule, :id_tutor, :id_location, :id_journey)';

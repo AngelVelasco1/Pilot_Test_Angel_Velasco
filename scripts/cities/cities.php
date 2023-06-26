@@ -1,6 +1,7 @@
 <?php
-namespace App;
-
+namespace App\cities;
+use App\db\connect;
+use App\Singleton;
 class cities extends connect
 {
     private $queryPost = 'INSERT INTO cities(id, name_city, id_region) VALUES (:identification, :name_city, :regionId)';

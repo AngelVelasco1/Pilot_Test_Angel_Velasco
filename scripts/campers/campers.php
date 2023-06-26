@@ -1,6 +1,7 @@
 <?php
-namespace App;
-
+namespace App\campers;
+use App\db\connect;
+use App\Singleton;
 class campers extends connect
 {
     private $queryPost = 'INSERT INTO campers(id, id_team_schedule, id_route, id_trainer, id_psycologist, id_teacher, id_level, id_journey, id_staff) VALUES (:identification, :id_team_schedule, :id_route, :id_trainer, :id_psycologist, :id_teacher, :id_level, :id_journey, :id_staff)';

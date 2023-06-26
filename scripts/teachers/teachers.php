@@ -1,6 +1,5 @@
 <?php
 namespace App\teachers;
-
 use App\db\connect;
 use App\Singleton;
 

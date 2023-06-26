@@ -1,6 +1,7 @@
 <?php
-namespace App;
-
+namespace App\contact_info;
+use App\db\connect;
+use App\Singleton;
 class contact_info extends connect
 {
     private $queryPost = 'INSERT INTO contact_info(id, id_staff, whatsapp, instagram, linkedin, email, address, cel_number) VALUES (:identification, :staffId, :whatsapp, :instagram, :linkedin, :email, :address, :cel)';
