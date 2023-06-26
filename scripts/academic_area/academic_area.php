@@ -1,10 +1,15 @@
 <?php
-namespace App;
+namespace App\academic_area;
+use App\db\connect;
+use App\Singleton;
 
 class academic_area extends connect
 {
     private $queryPost = 'INSERT INTO academic_area(id, id_area, id_staff, id_position, id_journeys) VALUES (:identification, :areaId, :staffId, :positionId, journeysId)';
-    private $queryGet = 'SELECT id AS "identification", SELECT id_area AS "areaId", SELECT id_staff AS "staffId", SELECT id_position AS "positionId", SELECT id_journeys AS "journerysId FROM academic_area';
+    private $queryGet = 'SELECT id AS "identification", SELECT id_area AS "areaId", SELECT id_staff AS "staffId", SELECT id_position AS "positionId", SELECT id_journeys AS "journerysId FROM academic_area
+        INNER JOIN areas on academic_area.id_area = areas.id,
+        INNER JOIN staff on academic_area.id_staff = staff.id,
+        INNER JOIN position on academic_area.id_position = position.id';
     private $queryUpdate = 'UPDATE academic_area SET id_area = :areaId, id_staff = :staffId, id_position = :positionId, id_journeys = :journeysId WHERE id = :identification';
     private $queryDelete = 'DELETE FROM academic_area WHERE id = :identification';
     private $msg;
