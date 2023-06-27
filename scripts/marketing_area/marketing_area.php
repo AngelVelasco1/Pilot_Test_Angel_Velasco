@@ -1,9 +1,7 @@
 <?php
-namespace App\marketing_area;
-
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
-
 class marketing_area extends connect
 {
     private $msg;
@@ -17,9 +15,8 @@ class marketing_area extends connect
     ];
 
     use Singleton;
-
     //? Constructor */
-    function __construct(private $id = 1, private $id_area = 1, private $id_staff = 1, private $id_position, private $id_journey = 1)
+    function __construct()
     {
         parent::__construct();
     }
@@ -34,9 +31,9 @@ class marketing_area extends connect
             $sentence = $this->conx->prepare($query);
             $sentence->execute($data);
 
-            $this->msg = ["Code" => 200 + $sentence->rowCount(), "Message" => "Inserted Data"];
+            $this->msg = json_encode(["Code" => 200 + $sentence->rowCount(), "Message" => "Inserted Data"]);
         } catch (\PDOException $e) {
-            $this->msg = ["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]];
+            $this->msg = json_encode(["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]]);
         } finally {
             print_r($this->msg);
         }
@@ -46,20 +43,23 @@ class marketing_area extends connect
     {
         try {
             $query = "SELECT * FROM $this->table 
-                INNER JOIN areas ON $this->table.id_area = areas.id,
-                INNER JOIN staff ON $this->table.id_staff = staff.id,
-                INNER JOIN position ON $this->table.id_position = position.id";
-
+                INNER JOIN areas ON $this->table.id_area = areas.id
+                INNER JOIN staff ON $this->table.id_staff = staff.id
+                INNER JOIN position ON $this->table.id_position = position.id
+                ";
+    
             $sentence = $this->conx->prepare($query);
             $sentence->execute();
-
-            $this->msg = ["Code" => 200, "Message" => $sentence->fetchAll(\PDO::FETCH_ASSOC)];
+    
+            $result = $sentence->fetchAll(\PDO::FETCH_ASSOC);
+            $this->msg = json_encode(["Code" => 200, "Message" => $result]);
         } catch (\PDOException $e) {
-            $this->msg = ["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]];
+            $this->msg = json_encode(["Code" => $e->getCode(), "Message" => $e->getMessage()]);
         } finally {
-            print_r($this->msg);
+            echo $this->msg;
         }
     }
+    
 
     //? UPDATE Function */
     function marketingAreaUpdate()
@@ -72,9 +72,9 @@ class marketing_area extends connect
             $sentence = $this->conx->prepare($query);
             $sentence->execute($data);
 
-            ($sentence->rowCount() > 0) ? $this->msg = ["Code" => 200, "Message" => "Updated Data"] : "none";
+            ($sentence->rowCount() > 0) ? $this->msg = json_encode(["Code" => 200, "Message" => "Updated Data"]) : "none";
         } catch (\PDOException $e) {
-            $this->msg = ["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]];
+            $this->msg = json_encode(["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]]);
         } finally {
             print_r($this->msg);
         }
@@ -88,9 +88,9 @@ class marketing_area extends connect
             $sentence->bindValue(["identification" => $this->id]);
             $sentence->execute();
 
-            $this->msg = ["Code" => 200, "Message" => "Deleted Data"];
+            $this->msg = json_encode(["Code" => 200, "Message" => "Deleted Data"]);
         } catch (\PDOException $e) {
-            $this->msg = ["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]];
+            $this->msg = json_encode(["Code" => $e->getCode(), "Message" => $sentence->errorInfo()[2]]);
         } finally {
             print_r($this->msg);
         }
@@ -118,8 +118,10 @@ class marketing_area extends connect
             $statements[] = "$column = :$param";
         }
         $statements = implode(', ', $statements);
-        return "UPDATE $this->table SET statements WHERE id = :identification";
+        return "UPDATE $this->table SET $statements WHERE id = :identification";
     }
-
 }
+
+
+
 ?>

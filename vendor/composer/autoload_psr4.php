@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\' => array($baseDir . '/scripts/db', $baseDir . '/scripts/system', $baseDir . '/scripts/academic_area', $baseDir . '/scripts/admin_area', $baseDir . '/scripts/design_area', $baseDir . '/scripts/maint_area', $baseDir . '/scripts/marketing_area'),
+    'App\\' => array($baseDir . '/scripts/db', $baseDir . '/scripts/system', $baseDir . '/scripts/academic_area', $baseDir . '/scripts/admin_area', $baseDir . '/scripts/design_area', $baseDir . '/scripts/maint_area', $baseDir . '/scripts/marketing_area', $baseDir . '/scripts/areas', $baseDir . '/scripts/cities', $baseDir . '/scripts/countries', $baseDir . '/scripts/regions', $baseDir . '/scripts/contact_info', $baseDir . '/scripts/emergency_contact', $baseDir . '/scripts/campers', $baseDir . '/scripts/software_skills', $baseDir . '/scripts/english_skills', $baseDir . '/scripts/soft_skills', $baseDir . '/scripts/review_skills', $baseDir . '/scripts/team_educators', $baseDir . '/scripts/teachers', $baseDir . '/scripts/trainers', $baseDir . '/scripts/routes', $baseDir . '/scripts/levels', $baseDir . '/scripts/position', $baseDir . '/scripts/staff'),
 );
