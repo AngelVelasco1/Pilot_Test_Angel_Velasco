@@ -1,6 +1,6 @@
 <?php
-namespace App\contact_info;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class contact_info extends connect
 {

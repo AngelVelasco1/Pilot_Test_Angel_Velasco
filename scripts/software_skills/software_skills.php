@@ -1,6 +1,6 @@
 <?php
-namespace App\software_skills;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class software_skills extends connect
 {

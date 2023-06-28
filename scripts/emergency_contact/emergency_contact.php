@@ -1,6 +1,6 @@
 <?php
-namespace App\emergency_contact;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class emergency_contact extends connect
 {

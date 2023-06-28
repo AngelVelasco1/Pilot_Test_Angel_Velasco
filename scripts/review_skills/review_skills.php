@@ -1,6 +1,6 @@
 <?php
-namespace App\review_skills;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class review_skills extends connect
 {

@@ -1,6 +1,6 @@
 <?php
-namespace App\maint_area;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class maint_area extends connect
 {

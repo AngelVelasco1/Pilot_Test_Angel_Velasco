@@ -1,6 +1,6 @@
 <?php
-namespace App\english_skills;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class english_skills extends connect
 {

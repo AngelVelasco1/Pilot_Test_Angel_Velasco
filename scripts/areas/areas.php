@@ -1,6 +1,7 @@
 <?php
 namespace App;
-
+use App\connect;
+use App\Singleton;
 class areas extends connect
 {
     private $queryPost = 'INSERT INTO areas(id, name_area) VALUES (:identification, :name_area)';
@@ -8,6 +9,7 @@ class areas extends connect
     private $queryUpdate = 'UPDATE areas SET name_area = :name_area WHERE id = :identification';
     private $queryDelete = 'DELETE FROM areas WHERE id = :identification';
     private $msg;
+    
     use Singleton;
 
     //? Constructor */

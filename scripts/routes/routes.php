@@ -1,6 +1,6 @@
 <?php
-namespace App\routes;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class routes extends connect
 {

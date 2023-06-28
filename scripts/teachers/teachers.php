@@ -1,6 +1,6 @@
 <?php
-namespace App\teachers;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 
 class teachers extends connect

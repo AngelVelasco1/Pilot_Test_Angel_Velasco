@@ -1,6 +1,6 @@
 <?php
-namespace App\levels;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class levels extends connect
 {

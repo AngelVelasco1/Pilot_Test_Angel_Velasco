@@ -1,6 +1,6 @@
 <?php
-namespace App\staff;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 
 class staff extends connect

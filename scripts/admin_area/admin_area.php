@@ -1,6 +1,6 @@
 <?
 namespace App\admin_area;
-use App\db\connect;
+use App\connect;
 use App\Singleton;
 
 class adminArea extends connect

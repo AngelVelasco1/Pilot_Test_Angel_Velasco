@@ -1,6 +1,6 @@
 <?php
-namespace App\cities;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 class cities extends connect
 {

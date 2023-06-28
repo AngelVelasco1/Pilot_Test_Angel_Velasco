@@ -1,6 +1,6 @@
 <?php
-namespace App\design_area;
-use App\db\connect;
+namespace App;
+use App\connect;
 use App\Singleton;
 
 class design_area extends connect
