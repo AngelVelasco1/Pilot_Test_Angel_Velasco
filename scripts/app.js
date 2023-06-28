@@ -1,22 +1,18 @@
-// Realizar la solicitud AJAX al archivo PHP
-fetch('ruta_al_archivo/get_data.php')
+fetch('./marketing_area/marketing_area.php')
   .then(response => response.json())
   .then(data => {
-    // Trabajar con los datos obtenidos
-    console.log(data); // Imprime los datos en la consola
     
-    // Ejemplo: Mostrar los datos en el documento HTML
-    const tableBody = document.querySelector('#marketingTable tbody');
+    const table = document.querySelector('#selected-table');
     data.forEach(item => {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${item.id}</td>
-        <td>${item.area}</td>
-        <td>${item.staff}</td>
-        <td>${item.position}</td>
-        <td>${item.journey}</td>
+        <td>${item.id_area}</td>
+        <td>${item.id_staff}</td>
+        <td>${item.id_position}</td>
+        <td>${item.id_journeys}</td>
       `;
-      tableBody.appendChild(row);
+      table.appendChild(row);
     });
   })
   .catch(error => console.error(error));
